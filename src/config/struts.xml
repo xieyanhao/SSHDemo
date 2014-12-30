@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC  
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"  
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+
+	<!--国际化支持配置开始 -->
+	<constant name="struts.custom.i18n.resources" value="globalMessages" />
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<constant name="struts.i18n.reload" value="false" />
+	<!--国际化支持配置结束 -->
+
+	<!--spring struts 集成开始 -->
+	<constant name="struts.objectFactory" value="spring" />
+	<constant name="struts.objectFactory.spring.autoWire" value="name" />
+	<!-- 自动注入总是有效 -->
+	<constant name="struts.objectFactory.spring.autoWire.alwaysRespect" value="true" />
+	<!--spring struts 集成结束 -->
+	
+	<!-- 指定需要struts2处理的请求后缀，默认值为action. 如果用户需要指定多个请求后缀，则多个后缀之间以英语逗号(,)隔开 -->
+	<constant name="struts.action.extension" value="do" />
+
+	<package name="global-struts" abstract="true" extends="struts-default" namespace="/">
+		<interceptors>
+			<interceptor-stack name="logException">
+				<interceptor-ref name="defaultStack">
+					<!-- 日志输出配置要和log4j.properties配合使用 -->
+					<param name="exception.logEnabled">true</param>
+					<param name="exception.logLevel">error</param>
+				</interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+
+		<default-interceptor-ref name="logException" />
+		<!--全局跳转 -->
+
+		<global-exception-mappings>
+			<exception-mapping result="exception" exception="java.lang.Exception" />
+		</global-exception-mappings>
+		
+	</package>
+
+	<include file="config/struts/struts-login.xml" />
+
+</struts>

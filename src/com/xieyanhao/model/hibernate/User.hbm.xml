@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        
+<!-- 
+<hibernate-mapping package="包名">  
+    <class name="类名" table="表名">  
+        <id name="主键在java类中的字段名" column="对应表中字段" type="类型 ">  
+            <generator class="主键生成策略"/>  
+        </id>  
+    </class>  
+</hibernate-mapping> 
+-->
+
+<hibernate-mapping package="com.xieyanhao.model.pojos">
+
+	<class name="User" table="jya_user">
+
+		<id name="id" column="id" type="integer">
+			<generator class="native" />
+		</id>
+
+		<property name="username" column="username"  type="string"/>
+		<property name="password" column="password"  type="string"/>
+		<property name="email" column="email"  type="string"/>
+		<property name="headIco" column="head_ico"  type="string"/>
+		<property name="eId" column="e_id"  type="integer"/>
+		
+	</class>
+	
+</hibernate-mapping>

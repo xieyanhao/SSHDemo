@@ -1,0 +1,7 @@
+# Gradle files
+build/
+.myeclipse/
+.settings/
+WebRoot/WEB-INF/classes/
+# Java class files
+*.class
